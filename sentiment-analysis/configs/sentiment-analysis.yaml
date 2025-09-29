@@ -1,0 +1,202 @@
+{
+  "port": 9001,
+  "server_name": "potato annotator",
+  "annotation_task_name": "Reddit Character Sentiment",
+
+  "output_annotation_dir": "annotation_output/",
+  "output_annotation_format": "tsv",
+  "annotation_codebook_url": "",
+  "login": {
+   "type": 'url_direct',    #can be 'password' or 'url_direct'
+   "url_argument": 'PROLIFIC_PID' # when the login type is set to 'url_direct', 'url_argument' must be setup for a direct url argument login
+},
+#the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
+ "jumping_to_id_disabled": False,
+
+#the navigation bar will be hidden to the annotators if "hide_navbar" is True
+ "hide_navbar": True,
+
+  "data_files": [
+    "data_files/ProlificBoJackHorseman.json"
+  ],
+  
+  "item_properties": {
+    "id_key": "id",
+    "text_key": "text",
+
+  },
+      "list_as_text": {
+      "text_list_prefix_type": 'none',
+    },
+
+
+  "user_config": {
+    "allow_all_users": True,
+    "users": []
+  },
+
+  "alert_time_each_instance": 10000000,
+
+"surveyflow": {
+    "on": True,
+    "order": ['pre_annotation','post_annotation'],
+    "pre_annotation": ['surveyflow/intro.jsonl'],
+    "post_annotation": ['surveyflow/end.jsonl'],
+
+  },
+
+  
+ "automatic_assignment": {
+    "on": false,
+    "output_filename": "task_assignment.json",
+    "sampling_strategy": "random",
+    "labels_per_instance": 3,
+    "instance_per_annotator": 50,
+    "test_question_per_annotator":3,
+    "users":[],
+    },
+
+  "annotation_schemes": [
+    {
+      "annotation_type": "multiselect",
+      "name": "sentiment",
+      "description": "Select one or more sentiments expressed towards the given character.",
+      "labels": ["positive", "neutral", "negative"]
+    },
+    {
+      "annotation_type": "multiselect",
+      "name": "positive_reasons",
+    
+      "description": "If 'positive' sentiment was selected, choose one or more reasons.",
+
+   "labels": [
+  {
+    "name": "Adaptation Difference",
+    "tooltip": "Sentiment is based on differences between the show and source material (e.g., books)."
+  },
+  {
+    "name": "Actor Appearance",
+    "tooltip": "Opinion about the actor’s looks or persona, not the character (e.g., attractiveness)."
+  },
+  {
+    "name": "Fandom Echo",
+    "tooltip": "Sentiment influenced by popular opinions or memes in the community."
+  },
+  {
+    "name": "Character Development & Complexity",
+    "tooltip": "Based on character growth, depth, or complexity over time."
+  },
+  {
+    "name": "Plot Reaction",
+    "tooltip": "Response to major plot events, twists, or narrative outcomes."
+  },
+  {
+    "name": "Logical Actions",
+    "tooltip": "Character’s actions are seen as rational or irrational given the context."
+  },
+  {
+    "name": "Humor or Entertainment",
+    "tooltip": "Character is liked for being funny, charming, or entertaining."
+  },
+  {
+    "name": "Narrative Transport",
+    "tooltip": "Emotional or mental immersion in the story, reacting as if real."
+  },
+  {
+    "name": "Viewpoint Divergence",
+    "tooltip": "Interpretation of a scene or character differs from others’ views."
+  },
+  {
+    "name": "Relatability",
+    "tooltip": "Sentiment based on personal identification or shared experience."
+  },
+  {
+    "name": "Moral Judgment",
+    "tooltip": "Character’s actions judged as ethical or unethical; fairness matters."
+  },
+  {
+    "name": "Moral Justification",
+    "tooltip": "Excusing questionable actions because the character is liked."
+  },
+  {
+    "name": "Loyalty Reward",
+    "tooltip": "Support based on long-term fan loyalty, not just recent events."
+  },
+  {
+    "name": "Narrative Justice",
+    "tooltip": "Desire for morally good characters to win and bad ones to lose."
+  }
+]
+    },
+    {
+      "annotation_type": "multiselect",
+      "name": "negative_reasons",
+
+      "description": "If 'negative' sentiment was selected, choose one or more reasons.",
+      "labels": [
+  {
+    "name": "Adaptation Difference",
+    "tooltip": "Sentiment is based on differences between the show and source material (e.g., books)."
+  },
+  {
+    "name": "Actor Appearance",
+    "tooltip": "Opinion about the actor’s looks or persona, not the character (e.g., attractiveness)."
+  },
+  {
+    "name": "Fandom Echo",
+    "tooltip": "Sentiment influenced by popular opinions or memes in the community."
+  },
+  {
+    "name": "Character Development & Complexity",
+    "tooltip": "Based on character growth, depth, or complexity over time."
+  },
+  {
+    "name": "Plot Reaction",
+    "tooltip": "Response to major plot events, twists, or narrative outcomes."
+  },
+  {
+    "name": "Logical Actions",
+    "tooltip": "Character’s actions are seen as rational or irrational given the context."
+  },
+  {
+    "name": "Humor or Entertainment",
+    "tooltip": "Character is liked for being funny, charming, or entertaining."
+  },
+  {
+    "name": "Narrative Transport",
+    "tooltip": "Emotional or mental immersion in the story, reacting as if real."
+  },
+  {
+    "name": "Viewpoint Divergence",
+    "tooltip": "Interpretation of a scene or character differs from others’ views."
+  },
+  {
+    "name": "Relatability",
+    "tooltip": "Sentiment based on personal identification or shared experience."
+  },
+  {
+    "name": "Moral Judgment",
+    "tooltip": "Character’s actions judged as ethical or unethical; fairness matters."
+  },
+  {
+    "name": "Moral Justification",
+    "tooltip": "Excusing questionable actions because the character is liked."
+  },
+  {
+    "name": "Loyalty Reward",
+    "tooltip": "Support based on long-term fan loyalty, not just recent events."
+  },
+  {
+    "name": "Narrative Justice",
+    "tooltip": "Desire for morally good characters to win and bad ones to lose."
+  }
+]
+
+    }
+  ],
+
+  "html_layout": "html_layouts/plain_layout.html",
+  "base_html_template": "html_layouts/base_template.html",
+  "header_file": "default",
+  "site_dir": "default"
+}
